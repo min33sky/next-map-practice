@@ -9,7 +9,7 @@ export default function Marker({ coordinates, icon, map, onClick }: Marker) {
       marker = new naver.maps.Marker({
         position: new naver.maps.LatLng(...coordinates),
         map,
-        // icon,
+        icon,
       });
     }
 
