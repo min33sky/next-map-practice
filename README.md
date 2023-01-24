@@ -1,4 +1,13 @@
-# Next Map Practice
+# NextJS Map Practice
+
+> This is a practice project for Next.js and Naver Map API. 🚀
+
+## Stack
+
+- React
+- Next.js
+- Sass
+- SWR
 
 ## Reference
 

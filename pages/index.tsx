@@ -12,8 +12,6 @@ import { Store } from '@/types/store';
 export default function Home({
   stores,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log('## 상점 정보: ', stores);
-
   const { initializeStores } = useStores();
 
   useEffect(() => {

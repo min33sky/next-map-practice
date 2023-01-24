@@ -8,7 +8,7 @@ interface Props {
   mapId?: string;
   initialCenter?: Coordinates;
   initialZoom?: number;
-  onLoad?: (map: any) => void;
+  onLoad?: (map: NaverMap) => void; //? 지도 객체를 로드한 후 실행할 함수
 }
 
 export default function Map({
@@ -39,6 +39,7 @@ export default function Map({
     const map = new window.naver.maps.Map(mapId, mapOptions);
     mapRef.current = map;
 
+    //? 지도 객체를 로드 후 부모 컴포넌트로 전달
     if (onLoad) {
       onLoad(map);
     }
