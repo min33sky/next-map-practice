@@ -12,14 +12,16 @@ const SCALED_MARKER_HEIGHT = MARKER_HEIGHT * SCALE;
 /**
  * 마커 아이콘을 생성하는 함수
  * @param markerIndex  스프라이트 이미지에서 마커의 위치를 결정하는 인덱스
+ * @param isSelected   현재 선택한 마커인지 여부
  * @returns {ImageIcon} 마커 아이콘 객체
  */
 export default function generateStoreMarkerIcon(
-  markerIndex: number
+  markerIndex: number,
+  isSelected: boolean
 ): ImageIcon {
   /** https://navermaps.github.io/maps.js.ncp/docs/tutorial-8-marker-retina-sprite.example.html */
   return {
-    url: 'images/markers.png',
+    url: isSelected ? 'images/markers-selected.png' : 'images/markers.png',
     size: new naver.maps.Size(SCALED_MARKER_WIDTH, SCALED_MARKER_HEIGHT), // 마커 사이즈 설정
     origin: new naver.maps.Point(SCALED_MARKER_WIDTH * markerIndex, 0), // 스프라이트 이미지에서 마커의 위치 설정
     scaledSize: new naver.maps.Size(
