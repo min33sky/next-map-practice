@@ -4,14 +4,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 interface Props {
+  onClickLogo: () => void;
   rightElements?: React.ReactElement[];
 }
 
-export default function Header({ rightElements }: Props) {
+export default function Header({ rightElements, onClickLogo }: Props) {
   return (
     <header className={styles.header}>
       <div className={styles.flexItem}>
-        <Link href={'/'} className={styles.box}>
+        <Link href={'/'} onClick={onClickLogo} className={styles.box}>
           <Image
             src={'/inflearn.png'}
             width={110}

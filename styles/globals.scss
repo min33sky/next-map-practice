@@ -10,6 +10,7 @@ body {
   margin: 0;
   width: 100%;
   height: 100%; // 100vh를 사용하면 Mobile 기기에서 버그가 날 수도 있다.
+  overflow: hidden;
 }
 
 @layer base {
