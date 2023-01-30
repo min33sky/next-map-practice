@@ -8,7 +8,7 @@ import Map from './Map';
 import Markers from './Markers';
 
 /**
- * 지도를 랜더링하는 컴포넌트
+ * 지도와 관련된 컴포넌트들을 랜더링하는 컴포넌트
  */
 export default function MapSection() {
   const { initializeMap } = useMap();
@@ -60,7 +60,6 @@ export default function MapSection() {
         initialCenter={initialCenter}
         initialZoom={initialZoom}
       />
-      ;
       <Markers />
     </>
   );

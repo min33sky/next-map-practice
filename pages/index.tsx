@@ -4,6 +4,7 @@ import useStores from '@/hooks/useStores';
 import { useEffect } from 'react';
 import { Store } from '@/types/store';
 import Header from '@/components/home/Header';
+import DetailSection from '@/components/home/DetailSection';
 
 export default function Home({
   stores,
@@ -17,8 +18,9 @@ export default function Home({
   return (
     <>
       <Header />
-      <main style={{ width: '100%', height: '100%' }}>
+      <main style={{ position: 'relative', width: '100%', height: '100%' }}>
         <MapSection />
+        <DetailSection />
       </main>
     </>
   );

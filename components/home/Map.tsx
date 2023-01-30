@@ -3,6 +3,7 @@ import { NaverMap } from '@/types/map';
 import { Coordinates } from '@/types/store';
 import Script from 'next/script';
 import React, { useEffect, useRef } from 'react';
+import styles from '@/styles/map.module.scss';
 
 interface Props {
   mapId?: string;
@@ -11,6 +12,9 @@ interface Props {
   onLoad?: (map: NaverMap) => void; //? 지도 객체를 로드한 후 실행할 함수
 }
 
+/**
+ * 네이버 지도를 랜더링하는 컴포넌트
+ */
 export default function Map({
   mapId = 'map',
   initialCenter = INITIAL_CENTER,
@@ -47,7 +51,7 @@ export default function Map({
 
   useEffect(() => {
     return () => {
-      mapRef.current?.destroy();
+      mapRef.current?.destroy(); //? 개발 모드에서는 useEffect가 두번 호출 되어서 새로고침하면 맵이 안보임
     };
   }, []);
 
@@ -59,7 +63,7 @@ export default function Map({
         src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${process.env.NEXT_PUBLIC_NCP_CLIENT_ID}`}
         onReady={initializeMap}
       />
-      <div id={mapId} style={{ width: '100%', height: '100%' }} />
+      <div id={mapId} className={styles.map} />
     </>
   );
 }
