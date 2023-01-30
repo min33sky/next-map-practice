@@ -8,6 +8,8 @@ import {
 import styles from '@/styles/detail.module.scss';
 import DetailHeader from '@/components/home/DetailHeader';
 import DetailContent from '@/components/home/DetailContent';
+import { useRouter } from 'next/router';
+import useCurrentStore from '@/hooks/useCurrentStore';
 
 /**
  * 상품 상세 페이지
@@ -17,12 +19,22 @@ export default function StoreDetail({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const expanded = true;
 
+  const router = useRouter();
+  const { setCurrentStore } = useCurrentStore();
+
+  const goToMap = () => {
+    setCurrentStore(store!);
+    router.push(`
+    /?zoom=15&lat=${store!.coordinates[0]}&lng=${store!.coordinates[1]}
+  `);
+  };
+
   return (
     <div className={`${styles.detailSection} ${styles.expanded}`}>
       <DetailHeader
         expanded={expanded}
         currentStore={store}
-        onClickArrow={() => null}
+        onClickArrow={goToMap}
       />
 
       <DetailContent currentStore={store} expanded={expanded} />
