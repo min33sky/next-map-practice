@@ -38,6 +38,7 @@ $section-padding-top: 8px;
   }
 }
 
+// 상세 정보 헤더
 .header {
   height: $header-height;
 
@@ -86,7 +87,7 @@ $section-padding-top: 8px;
   }
 }
 
-// Detail Content
+// 상세 정보
 .detailContent {
   height: 100%;
   overflow: hidden;
