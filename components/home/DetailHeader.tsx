@@ -17,11 +17,12 @@ export default function DetailHeader({
   currentStore,
 }: Props) {
   return (
-    <div aria-label="상세 정보 헤더" className={styles.header}>
+    <div className={styles.header}>
       <button
         className={`${styles.arrowButton} ${expanded ? styles.expanded : ''}`}
         onClick={onClickArrow}
         disabled={!currentStore}
+        aria-label={expanded ? '매장 정보 접기' : '매장 정보 펼치기'}
       >
         <IoIosArrowUp size={20} color="#666666" />
       </button>
@@ -34,6 +35,7 @@ export default function DetailHeader({
             onClick={() => {
               copy(location.origin + '/' + currentStore.name);
             }}
+            aria-label="매장 페이지 주소 클립보드 복사"
           >
             <AiOutlineShareAlt size={20} color="#666666" />
           </button>
