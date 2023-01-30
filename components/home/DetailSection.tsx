@@ -4,6 +4,7 @@ import useSWR from 'swr';
 import { CURRENT_STORE_KEY } from '@/hooks/useCurrentStore';
 import { Store } from '@/types/store';
 import { useState } from 'react';
+import DetailContent from './DetailContent';
 
 /**
  * 가게 상세 정보 표시 컴포넌트
@@ -20,7 +21,7 @@ export default function DetailSection() {
         currentStore ? styles.selected : ''
       } ${expanded ? styles.expanded : ''}`}
     >
-      <div className={styles.header}>
+      <div aria-label="상세 정보 헤더" className={styles.header}>
         <button
           className={`${styles.arrowButton} ${expanded ? styles.expanded : ''}`}
           onClick={() => setExpanded(!expanded)}
@@ -35,6 +36,8 @@ export default function DetailSection() {
           <p className={styles.title}>매장을 선택해주세요.</p>
         )}
       </div>
+
+      <DetailContent currentStore={currentStore} expanded={expanded} />
     </div>
   );
 }
