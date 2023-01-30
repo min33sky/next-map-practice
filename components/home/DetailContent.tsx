@@ -29,6 +29,7 @@ export default function DetailContent({ currentStore, expanded }: Props) {
               src={image}
               alt={currentStore.name + '의 이미지'}
               fill
+              sizes="120px"
               style={{ objectFit: 'cover' }}
               placeholder="blur"
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO0WhFsDwADzwF2mLYSJgAAAABJRU5ErkJggg=="

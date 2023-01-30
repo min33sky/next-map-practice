@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 interface Props {
-  onClickLogo: () => void;
+  onClickLogo?: () => void;
   rightElements?: React.ReactElement[];
 }
 
