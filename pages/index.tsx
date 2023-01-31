@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { Store } from '@/types/store';
 import Header from '@/components/home/Header';
 import DetailSection from '@/components/home/DetailSection';
+import { NextSeo } from 'next-seo';
 
 export default function Home({
   stores,
@@ -17,6 +18,10 @@ export default function Home({
 
   return (
     <>
+      <NextSeo
+        title="매장 지도"
+        description="Next.js 시작하기 강의를 위한 매장 지도 서비스입니다."
+      />
       <Header />
       <main
         style={{
