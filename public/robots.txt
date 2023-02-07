@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://next-map-tuto.vercel.app
+
+# Sitemaps
+Sitemap: https://next-map-tuto.vercel.app/sitemap.xml
