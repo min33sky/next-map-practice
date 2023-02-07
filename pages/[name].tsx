@@ -10,6 +10,7 @@ import DetailHeader from '@/components/home/DetailHeader';
 import DetailContent from '@/components/home/DetailContent';
 import { useRouter } from 'next/router';
 import useCurrentStore from '@/hooks/useCurrentStore';
+import { NextSeo } from 'next-seo';
 
 /**
  * 상품 상세 페이지
@@ -30,15 +31,22 @@ export default function StoreDetail({
   };
 
   return (
-    <div className={`${styles.detailSection} ${styles.expanded}`}>
-      <DetailHeader
-        expanded={expanded}
-        currentStore={store}
-        onClickArrow={goToMap}
+    <>
+      <NextSeo
+        title={store?.name}
+        description="매장 상페 페이지입니다."
+        canonical={`https://next-map-tuto.vercel.app/${store?.name}`}
       />
+      <div className={`${styles.detailSection} ${styles.expanded}`}>
+        <DetailHeader
+          expanded={expanded}
+          currentStore={store}
+          onClickArrow={goToMap}
+        />
 
-      <DetailContent currentStore={store} expanded={expanded} />
-    </div>
+        <DetailContent currentStore={store} expanded={expanded} />
+      </div>
+    </>
   );
 }
 
