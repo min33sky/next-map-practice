@@ -1,15 +1,16 @@
 import MapSection from '@/components/home/MapSection';
-import { InferGetStaticPropsType } from 'next';
+import { InferGetStaticPropsType, InferGetServerSidePropsType } from 'next';
 import useStores from '@/hooks/useStores';
 import { useEffect } from 'react';
 import { Store } from '@/types/store';
 import Header from '@/components/home/Header';
 import DetailSection from '@/components/home/DetailSection';
 import { NextSeo } from 'next-seo';
+import { getStores } from '@/utils/getStores';
 
 export default function Home({
   stores,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const { initializeStores } = useStores();
 
   useEffect(() => {
@@ -39,14 +40,15 @@ export default function Home({
   );
 }
 
-export async function getStaticProps() {
-  // TODO: next api routes로 불러오기
-  const stores = (await import('../public/stores.json')).default as Store[];
+export async function getServerSideProps() {
+  const stores = await getStores();
+
+  // const stores = (await import('../public/stores.json')).default as Store[];
 
   return {
     props: {
       stores,
     },
-    revalidate: 60 * 60, // 1 hour (상점 정보는 자주 바뀌지 않기 때문에 갱신을 빠르게 할 필요는 없다.)
+    // revalidate: 60 * 60, // 1 hour (상점 정보는 자주 바뀌지 않기 때문에 갱신을 빠르게 할 필요는 없다.)
   };
 }
