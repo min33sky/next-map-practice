@@ -10,7 +10,7 @@ import { getStores } from '@/utils/getStores';
 
 export default function Home({
   stores,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const { initializeStores } = useStores();
 
   useEffect(() => {
@@ -40,15 +40,13 @@ export default function Home({
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const stores = await getStores();
-
-  // const stores = (await import('../public/stores.json')).default as Store[];
 
   return {
     props: {
       stores,
     },
-    // revalidate: 60 * 60, // 1 hour (상점 정보는 자주 바뀌지 않기 때문에 갱신을 빠르게 할 필요는 없다.)
+    revalidate: 60 * 60, // 1 hour (상점 정보는 자주 바뀌지 않기 때문에 갱신을 빠르게 할 필요는 없다.)
   };
 }
