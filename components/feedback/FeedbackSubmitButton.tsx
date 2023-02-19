@@ -20,9 +20,7 @@ export default function FeedbackSubmitButton({
   setNewFeedbackContent,
   setFeedbackList,
 }: Props) {
-  // NOTE: 피드백 등록 후 10초 동안 disable
-  const [secondsLeft, setSecondsLeft] = useState(0); // 남은 시간
-
+  const [secondsLeft, setSecondsLeft] = useState(0); // 피드백 등록 가능한 시간
   const timer = useRef<NodeJS.Timeout | null>(null);
 
   //* 남은 시간이 0초가 되면 타이머를 종료시킨다.
@@ -33,6 +31,9 @@ export default function FeedbackSubmitButton({
     }
   }, [secondsLeft]);
 
+  /**
+   * 새로운 피드백을 등록하는 함수
+   */
   const appendNewFeedback = useCallback(
     (text: string) => {
       if (
@@ -47,6 +48,7 @@ export default function FeedbackSubmitButton({
       setFeedbackList((prev) => [newFeedback, ...prev.slice(1)]); //? 0번째 인덱스는 빈 피드백이므로 제거 후 삽입
       addFeedbackToFirestore(newFeedback);
 
+      // XXX: setImmediate()을 사용해볼까???
       setTimeout(() => {
         //? 0번째 인덱스에 빈 피드백을 삽입
         setFeedbackList((feedbackList) => [
@@ -66,7 +68,7 @@ export default function FeedbackSubmitButton({
   );
 
   // TODO: 피드백 폼 구현 후 주석 해제하기
-  //? 피드백 내용이 없으면 버튼을 렌더링하지 않는다.
+  // 피드백 내용이 없으면 버튼을 렌더링하지 않는다.
   // if (newFeedbackContent.trim().length === 0) return null;
 
   return (
