@@ -1,5 +1,6 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import styles from '@/styles/feedback.module.scss';
+import { BOARD_WIDTH } from './variables';
 
 interface Props {
   children: React.ReactNode;
@@ -48,6 +49,35 @@ export default function FeedbackBoardContainer({
     };
 
     position.current = { x: clientX, y: clientY };
+  }, []);
+
+  useEffect(() => {
+    let timer: number;
+
+    timer = requestAnimationFrame(function slowDown() {
+      let newOffsetX = offset.current.x + speed.current.x;
+      if (newOffsetX > BOARD_WIDTH / 2) newOffsetX = newOffsetX - BOARD_WIDTH;
+      if (newOffsetX < -BOARD_WIDTH / 2) newOffsetX = newOffsetX + BOARD_WIDTH;
+
+      let newOffsetY = offset.current.y + speed.current.y;
+      if (newOffsetY > BOARD_WIDTH / 2) newOffsetY = newOffsetY - BOARD_WIDTH;
+      if (newOffsetY < -BOARD_WIDTH / 2) newOffsetY = newOffsetY + BOARD_WIDTH;
+
+      offset.current = { x: newOffsetX, y: newOffsetY };
+
+      if (feedbackBoardRef && feedbackBoardRef.current) {
+        feedbackBoardRef.current.style.transform = `translate(calc(-50% - ${offset.current.x}px), calc(-50% - ${offset.current.y}px))`;
+      }
+
+      speed.current = {
+        x: speed.current.x * 0.86,
+        y: speed.current.y * 0.86,
+      };
+
+      timer = requestAnimationFrame(slowDown);
+    });
+
+    return () => cancelAnimationFrame(timer);
   }, []);
 
   return (
