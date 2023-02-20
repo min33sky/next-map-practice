@@ -1,7 +1,7 @@
 import { Feedback } from '@/types/feedback';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styles from '@/styles/feedback.module.scss';
-import { generateNewFeedback, MAX_CONTENT_LENGTH } from './variables';
+import { generateNewFeedback, MAX_CONTENT_LENGTH } from '../../utils/variables';
 import { addFeedbackToFirestore } from '@/firebase/feedback';
 
 interface Props {

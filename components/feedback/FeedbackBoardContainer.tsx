@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import styles from '@/styles/feedback.module.scss';
-import { BOARD_WIDTH } from './variables';
+import { BOARD_WIDTH } from '../../utils/variables';
 
 interface Props {
   children: React.ReactNode;

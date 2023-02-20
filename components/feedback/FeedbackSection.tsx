@@ -7,7 +7,7 @@ import {
   generateNewFeedback,
   MAX_CONTENT_LENGTH,
   SNAIL_SIDE_LENGTH,
-} from './variables';
+} from '../../utils/variables';
 
 interface Props {
   initialFeedbackList: Feedback[];

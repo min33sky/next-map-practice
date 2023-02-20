@@ -1,7 +1,7 @@
 import { Feedback } from '@/types/feedback';
 import React, { ChangeEvent } from 'react';
 import styles from '@/styles/feedback.module.scss';
-import { FEEDBACK_COLOR_SET, MAX_CONTENT_LENGTH } from './variables';
+import { FEEDBACK_COLOR_SET, MAX_CONTENT_LENGTH } from '../../utils/variables';
 
 interface Props {
   newFeedbackContent: Feedback['content'];
@@ -9,14 +9,14 @@ interface Props {
 }
 
 /**
- * 새로운 피드백을 작성하는 인풋 컴포넌트
+ * 새로운 피드백 작성을 위한 입력창
  */
 export default function NewFeedbackInput({
   newFeedbackContent,
   onChangeNewFeedbackContent,
 }: Props) {
   return (
-    <div className={`${styles.item} ${styles.inputItem}`}>
+    <article className={`${styles.item} ${styles.inputItem}`}>
       <div
         className={styles.card}
         style={{
@@ -42,6 +42,6 @@ export default function NewFeedbackInput({
           className={styles.textLength}
         >{`${newFeedbackContent.length} / ${MAX_CONTENT_LENGTH}`}</p>
       </div>
-    </div>
+    </article>
   );
 }
