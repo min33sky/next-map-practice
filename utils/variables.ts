@@ -4,10 +4,11 @@ import { generateSnailPositionArray } from '@/utils/generateSnailPositionArray';
 export const SNAIL_SIDE_LENGTH = 11;
 export const CARD_WIDTH = 200;
 export const BOARD_WIDTH = CARD_WIDTH * SNAIL_SIDE_LENGTH;
+
 /**
- * 피드백의 최대 글자 수 gg
+ * 피드백 입력 최대 글자 수
  */
-export const MAX_CONTENT_LENGTH = 80; //? 피드백의 최대 글자 수
+export const MAX_CONTENT_LENGTH = 80;
 
 export const snailPositionArray =
   generateSnailPositionArray(SNAIL_SIDE_LENGTH).reverse();
