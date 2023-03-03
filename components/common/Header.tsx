@@ -23,6 +23,7 @@ export default function Header({ rightElements, onClickLogo }: Props) {
             width={110}
             height={20}
             alt="inflearn Logo"
+            priority
           />
         </Link>
       </div>

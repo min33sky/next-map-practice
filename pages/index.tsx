@@ -23,6 +23,9 @@ export default function Home({
         title="매장 지도"
         description="Next.js 시작하기 강의를 위한 매장 지도 서비스입니다."
         canonical="https://next-map-tuto.vercel.app"
+        openGraph={{
+          url: 'https://next-map-tuto.vercel.app',
+        }}
       />
       <Header />
       <main

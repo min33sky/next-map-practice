@@ -33,6 +33,7 @@ export default function DetailContent({ currentStore, expanded }: Props) {
               style={{ objectFit: 'cover' }}
               placeholder="blur"
               blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO0WhFsDwADzwF2mLYSJgAAAABJRU5ErkJggg=="
+              priority
             />
           </div>
         ))}

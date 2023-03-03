@@ -23,10 +23,15 @@ export async function getFeedbackListFromFirestore() {
     query(feedbackListCollection, orderBy('timestamp', 'desc'), limit(10)) // TODO: limit(10) is a temporary solution
   );
 
+  // TODO: 버그
+
   querySnapshot.forEach((doc) => {
+    console.log('***** ㅎㅎㅎㅎㅎ *****: ', doc.data().timestamp.seconds);
+
     initialFeedbackList.push({
       content: doc.data().content,
-      timestamp: doc.data().timestamp.toDate().getTime(), //? Date 객체는 GetServerSideProps에서 사용할 수 없어서 변환
+      // timestamp: doc.data().timestamp.toDate().getTime(), //? Date 객체는 GetServerSideProps에서 사용할 수 없어서 변환
+      timestamp: doc.data().timestamp.seconds ?? 0, //? Date 객체는 GetServerSideProps에서 사용할 수 없어서 변환
     });
   });
 
