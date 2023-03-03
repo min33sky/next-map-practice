@@ -89,7 +89,9 @@ export default function FeedbackBoardContainer({
       onTouchEnd={onUp}
       onMouseMove={onMove}
       onTouchMove={onMove}
-      className={`${styles.feedbackBoardContainer} ${styles.showClones}`}
+      className={`${styles.feedbackBoardContainer} ${
+        showClones ? styles.showClones : ''
+      }`}
     >
       {children}
     </div>

@@ -35,6 +35,10 @@ export const FEEDBACK_COLOR_SET = {
   },
 } as const;
 
+/**
+ * 피드백 보드의 테마를 선택합니다.
+ * @param timestamp
+ */
 export const pickThemeByTimestamp = (
   timestamp: Feedback['timestamp']
 ): keyof typeof FEEDBACK_COLOR_SET => {
@@ -62,5 +66,6 @@ export const generateNewFeedback = (
   timestamp?: Feedback['timestamp']
 ): Feedback => ({
   content: content ?? '',
-  timestamp: timestamp ?? Math.floor(Math.random() * 10 ** 15),
+  // timestamp: timestamp ?? Math.floor(Math.random() * 10 ** 15),
+  timestamp: timestamp ?? Date.now(),
 });

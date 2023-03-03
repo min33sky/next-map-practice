@@ -35,8 +35,8 @@ export default function Feedback({
 }
 
 export async function getServerSideProps() {
-  // const initialFeedbackList = await getFeedbackListFromFirestore();
-  const initialFeedbackList: any[] = [];
+  const initialFeedbackList = await getFeedbackListFromFirestore();
+  // const initialFeedbackList: any[] = []; // TODO: 지워라!!
   return {
     props: {
       initialFeedbackList,
